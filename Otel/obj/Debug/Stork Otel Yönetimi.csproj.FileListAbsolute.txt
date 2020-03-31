@@ -1,0 +1,98 @@
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.Baslangic.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.Giriş.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.musduzenle.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.Properties.Resources.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.rez.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.lokantafiyat.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.Musyonet.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.anasayfa.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Stork Otel Yönetimi.csproj.GenerateResource.Cache
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Stork Otel Yönetimi.csproj.CoreCompileInputs.cache
+C:\Users\tolun\Desktop\Otel\Otel\bin\Debug\Stork Otel Yönetimi.exe.config
+C:\Users\tolun\Desktop\Otel\Otel\bin\Debug\Stork Otel Yönetimi.exe
+C:\Users\tolun\Desktop\Otel\Otel\bin\Debug\Stork Otel Yönetimi.pdb
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Stork Otel Yönetimi.exe
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Stork Otel Yönetimi.pdb
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.odalar.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.odatur.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.Odakayit.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Stork Otel Yönetimi.csprojAssemblyReference.cache
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.fatura.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.duzenle2.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.faturabilgi.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.musekle.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.Ekstram.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.Kayitiptal.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.rezarvasyon.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.Yenirez.resources
+C:\Users\tolun\Desktop\Otel\Otel\bin\Debug\CircularProgressBar.dll
+C:\Users\tolun\Desktop\Otel\Otel\bin\Debug\WinFormAnimation.dll
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Stork Otel Yönetimi.csproj.CopyComplete
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.yetkili.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.notlar.resources
+C:\Users\tolun\Desktop\Otel\Otel\obj\Debug\Otel.loglar.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\bin\Debug\Stork Otel Yönetimi.exe.config
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\bin\Debug\Stork Otel Yönetimi.exe
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\bin\Debug\Stork Otel Yönetimi.pdb
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\bin\Debug\CircularProgressBar.dll
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\bin\Debug\WinFormAnimation.dll
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.csprojAssemblyReference.cache
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.rezarvasyon.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.Baslangic.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.fatura.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.Ekstram.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.Kayitiptal.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.musekle.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.Giriş.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.musduzenle.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.Properties.Resources.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.rez.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.lokantafiyat.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.Musyonet.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.anasayfa.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.odalar.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.odatur.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.Odakayit.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.duzenle2.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.faturabilgi.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.notlar.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.loglar.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.Yenirez.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Otel.yetkili.resources
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.csproj.GenerateResource.cache
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.csproj.CopyComplete
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.exe
+C:\Users\tolun\OneDrive\Masaüstü\Project Objects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.pdb
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\bin\Debug\Stork Otel Yönetimi.exe.config
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\bin\Debug\Stork Otel Yönetimi.exe
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\bin\Debug\Stork Otel Yönetimi.pdb
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\bin\Debug\CircularProgressBar.dll
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\bin\Debug\WinFormAnimation.dll
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.csprojAssemblyReference.cache
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.rezarvasyon.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.Baslangic.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.fatura.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.Ekstram.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.Kayitiptal.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.musekle.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.Giriş.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.musduzenle.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.Properties.Resources.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.rez.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.lokantafiyat.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.Musyonet.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.anasayfa.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.odalar.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.odatur.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.Odakayit.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.duzenle2.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.faturabilgi.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.notlar.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.loglar.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.Yenirez.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Otel.yetkili.resources
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.csproj.GenerateResource.cache
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.csproj.CopyComplete
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.exe
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.pdb
+C:\Users\tolun\OneDrive\Masaüstü\Projects\C# Projects\Stork Hotel\Otel\obj\Debug\Stork Otel Yönetimi.csproj.CoreCompileInputs.cache
