@@ -36,9 +36,6 @@ namespace Otel
             SqlCommand komut5 = new SqlCommand("select count(*) from Yetkili where Kullanici_adi='" + textBox1.Text + "'", yeni);
 
 
-
-
-
             if (Convert.ToInt32(komut5.ExecuteScalar()) <= 0)
 
             {
