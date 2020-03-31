@@ -194,7 +194,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Seçili Rezervasyonun Girişini Tamamla";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+
             // 
             // button3
             // 
@@ -231,7 +231,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "rezarvasyon";
             this.Size = new System.Drawing.Size(940, 575);
-            this.Load += new System.EventHandler(this.rezarvasyon_Load);
+
             this.VisibleChanged += new System.EventHandler(this.rezarvasyon_VisibleChanged);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
