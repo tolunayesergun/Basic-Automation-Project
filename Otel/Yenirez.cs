@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -18,12 +12,12 @@ namespace Otel
         {
             InitializeComponent();
         }
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
+
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         private void Yenirez_Load(object sender, EventArgs e)
         {
             dateTimePicker2.Value = dateTimePicker1.Value.AddDays(1);
-
         }
 
         public static DateTime bTarih;
@@ -32,12 +26,9 @@ namespace Otel
 
         private void Yenirez_VisibleChanged(object sender, EventArgs e)
         {
-
             bTarih = Convert.ToDateTime(dateTimePicker1.Value);
             kTarih = Convert.ToDateTime(dateTimePicker2.Value);
             gTarih = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-
-
 
             yeni.Close();
             yeni.Open();
@@ -60,9 +51,6 @@ namespace Otel
             dataGridView1.AllowUserToAddRows = false;
             comboBox1.SelectedIndex = 0;
 
-
-
-
             SqlCommand komut12 = new SqlCommand();
             komut12.CommandText = "Select Oda_Turu  from Oda_Turleri ORDER BY Oda_Turu ASC";
             komut12.Connection = yeni;
@@ -75,12 +63,7 @@ namespace Otel
                 comboBox3.Items.Add(ot["Oda_Turu"]);
             }
 
-
-
-
-
             yeni.Close();
-
 
             label4.Text = "Seçim Bekleniyor";
             label11.Text = "Seçim Bekleniyor";
@@ -103,8 +86,6 @@ namespace Otel
             groupBox4.Visible = false;
             dataGridView1.ClearSelection();
             dataGridView2.ClearSelection();
-
-
         }
 
         public class genel
@@ -114,11 +95,9 @@ namespace Otel
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             if (genel.secim == "10")
             {
                 MessageBox.Show("Arama Yapabilmek İçin Lütfen Bir Kriter Seçiniz");
-
             }
             else
             {
@@ -137,14 +116,11 @@ namespace Otel
             }
         }
 
-   
-
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (genel.secim == "10")
             {
                 MessageBox.Show("Arama Yapabilmek İçin Lütfen Bir Kriter Seçiniz");
-
             }
             else
             {
@@ -164,8 +140,6 @@ namespace Otel
                     yeni.Close();
                 }
             }
-
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -184,9 +158,11 @@ namespace Otel
                 case "Oda Numarası":
                     genel.secim = "Ad";
                     break;
+
                 case "Tc Kimlik Numarası":
                     genel.secim = "Kimlik_No";
                     break;
+
                 case "Müşteri Numarası":
                     genel.secim = "Musteri_no";
                     break;
@@ -230,15 +206,12 @@ namespace Otel
                     DataTable tablo = new DataTable();
                     tablo.Load(oku); dataGridView1.DataSource = tablo;
                     dataGridView1.AllowUserToAddRows = false;
-
                 }
             }
             else
             {
                 if (comboBox3.SelectedIndex == 0 || comboBox3.SelectedIndex == -1)
                 {
-
-
                     SqlCommand komut2 = new SqlCommand();
                     komut2.CommandText = "select distinct o.Kat_No as ' Kat' , o.Oda_No as 'Oda No',o.Oda_Turu as ' Oda Türü' from Odalar as o  left join Hesap as h on o.Oda_No=h.Oda_No   where   ((h.Giris_Tarihi IS NULL) or not((h.Giris_Tarihi < '" + kTarih.ToString("MM/dd/yyyy HH:mm:ss") + "' and h.Cikis_Tarihi > '" + bTarih.ToString("MM/dd/yyyy HH:mm:ss") + "')) and not(o.Oda_No = any(select distinct o.Oda_No  from Odalar as o  left join Hesap as h on o.Oda_No=h.Oda_No   where   ((h.Giris_Tarihi < '" + kTarih.ToString("MM/dd/yyyy HH:mm:ss") + "' and h.Cikis_Tarihi > '" + bTarih.ToString("MM/dd/yyyy HH:mm:ss") + "'))))) order by o.Oda_No ";
                     komut2.Connection = yeni;
@@ -246,11 +219,9 @@ namespace Otel
                     DataTable tablo2 = new DataTable();
                     tablo2.Load(oku2); dataGridView1.DataSource = tablo2;
                     dataGridView1.AllowUserToAddRows = false;
-
                 }
                 else
                 {
-
                     SqlCommand komut6 = new SqlCommand();
                     komut6.CommandText = "select distinct o.Kat_No as ' Kat' , o.Oda_No as 'Oda No',o.Oda_Turu as ' Oda Türü' from Odalar as o  left join Hesap as h on o.Oda_No=h.Oda_No  where  ((o.Oda_Turu = '" + genel2.secim3 + "')  and ((h.Giris_Tarihi IS NULL) or not((h.Giris_Tarihi < '" + kTarih.ToString("MM/dd/yyyy HH:mm:ss") + "' and h.Cikis_Tarihi > '" + bTarih.ToString("MM/dd/yyyy HH:mm:ss") + "')) and not(o.Oda_No = any(select distinct o.Oda_No  from Odalar as o  left join Hesap as h on o.Oda_No=h.Oda_No   where   ((h.Giris_Tarihi < '" + kTarih.ToString("MM/dd/yyyy HH:mm:ss") + "' and h.Cikis_Tarihi > '" + bTarih.ToString("MM/dd/yyyy HH:mm:ss") + "')))))) order by o.Oda_No ";
                     komut6.Connection = yeni;
@@ -259,7 +230,6 @@ namespace Otel
                     tablo6.Load(oku6); dataGridView1.DataSource = tablo6;
                     dataGridView1.AllowUserToAddRows = false;
                 }
-
             }
             yeni.Close();
         }
@@ -291,15 +261,12 @@ namespace Otel
                     DataTable tablo = new DataTable();
                     tablo.Load(oku); dataGridView1.DataSource = tablo;
                     dataGridView1.AllowUserToAddRows = false;
-
                 }
             }
             else
             {
-
                 if (comboBox2.SelectedIndex == 0 || comboBox2.SelectedIndex == -1)
                 {
-
                     SqlCommand komut2 = new SqlCommand();
                     komut2.CommandText = "select distinct o.Kat_No as ' Kat' , o.Oda_No as 'Oda No',o.Oda_Turu as ' Oda Türü' from Odalar as o  left join Hesap as h on o.Oda_No=h.Oda_No   where   ((h.Giris_Tarihi IS NULL) or not((h.Giris_Tarihi < '" + kTarih.ToString("MM/dd/yyyy HH:mm:ss") + "' and h.Cikis_Tarihi > '" + bTarih.ToString("MM/dd/yyyy HH:mm:ss") + "')) and not(o.Oda_No = any(select distinct o.Oda_No  from Odalar as o  left join Hesap as h on o.Oda_No=h.Oda_No   where   ((h.Giris_Tarihi < '" + kTarih.ToString("MM/dd/yyyy HH:mm:ss") + "' and h.Cikis_Tarihi > '" + bTarih.ToString("MM/dd/yyyy HH:mm:ss") + "'))))) order by o.Oda_No ";
                     komut2.Connection = yeni;
@@ -307,7 +274,6 @@ namespace Otel
                     DataTable tablo2 = new DataTable();
                     tablo2.Load(oku2); dataGridView1.DataSource = tablo2;
                     dataGridView1.AllowUserToAddRows = false;
-
                 }
                 else
                 {
@@ -317,12 +283,10 @@ namespace Otel
                     DataTable tablo = new DataTable();
                     tablo.Load(oku); dataGridView1.DataSource = tablo;
                     dataGridView1.AllowUserToAddRows = false;
-
                 }
             }
             yeni.Close();
         }
-
 
         public static string Ad;
         public static string Soyad;
@@ -347,17 +311,12 @@ namespace Otel
             SqlCommand cmd = new SqlCommand("Select * from Musteri where Musteri_no = '" + yer + "'", yeni);
             SqlDataReader oku = cmd.ExecuteReader();
 
-
-
             while (oku.Read())
             {
                 Ad = oku["Ad"].ToString();
                 Soyad = oku["Soyad"].ToString();
                 mus = oku["Musteri_no"].ToString();
-
-
             }
-
 
             label4.Text = Ad + " " + Soyad;
             label16.Text = mus;
@@ -375,18 +334,11 @@ namespace Otel
             yerbil = yer2;
             indext = dataGridView1.CurrentRow.Index;
 
-
-
-
             SqlCommand cmd2 = new SqlCommand("Select * from Oda_Turleri where Oda_Turu = '" + yer + "'", yeni);
             SqlDataReader oku2 = cmd2.ExecuteReader();
 
-
-
             while (oku2.Read())
             {
-
-
                 Oda_Turu = oku2["Oda_Turu"].ToString();
 
                 fiy = Convert.ToInt32(oku2["fiyat"].ToString());
@@ -394,12 +346,6 @@ namespace Otel
                 cytk = Convert.ToInt32(oku2["ciftytk"].ToString());
 
                 tytk = Convert.ToInt32(oku2["tekytk"].ToString());
-
-
-
-
-
-
             }
 
             toplamytk = 2 * cytk + tytk;
@@ -408,7 +354,6 @@ namespace Otel
             label10.Text = Oda_Turu;
             label13.Text = Convert.ToString(fiy) + " TL";
             label25.Text = Convert.ToString(toplamytk);
-
 
             yeni.Close();
             yeni.Open();
@@ -419,18 +364,12 @@ namespace Otel
             DataSet ds = new DataSet();
             adp.Fill(ds);
 
-
             for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
             {
                 listBox1.Items.Add(ds.Tables[0].Rows[i][2].ToString() + " " + ds.Tables[0].Rows[i][3].ToString());
             }
 
             label21.Text = Convert.ToString(ds.Tables[0].Rows.Count);
-
-
-
-
-
 
             yeni.Close();
         }
@@ -451,7 +390,6 @@ namespace Otel
                 {
                     MessageBox.Show("Müşteri ve oda seçimini gerçekleştirmeden kayıt ekleyemessiniz");
                 }
-
             }
             else
             {
@@ -475,17 +413,12 @@ namespace Otel
                     yMusteri_no.Value = label16.Text;
                     komut2.Parameters.Add(yMusteri_no);
 
-
-
-
                     SqlParameter yOda_No = new SqlParameter();
                     yOda_No.ParameterName = "@yOda_No";
                     yOda_No.SqlDbType = SqlDbType.Int;
                     yOda_No.Size = 50;
                     yOda_No.Value = Convert.ToInt32(label11.Text);
                     komut2.Parameters.Add(yOda_No);
-
-
 
                     SqlParameter yGiris_Tarihi = new SqlParameter();
                     yGiris_Tarihi.ParameterName = "@yGiris_Tarihi";
@@ -501,13 +434,8 @@ namespace Otel
                     yCikis_Tarihi.Value = dateTimePicker2.Value.ToShortDateString();
                     komut2.Parameters.Add(yCikis_Tarihi);
 
-
                     komut2.ExecuteNonQuery();
                     MessageBox.Show("Kişi Odaya Eklendi");
-
-
-
-                
 
                     SqlCommand komut5 = new SqlCommand();
                     komut5.CommandText = "Select Musteri_no as 'Müşteri Numarası' , Ad,Soyad   from Musteri where Oda_no is null ORDER BY Musteri_no DESC ";
@@ -525,14 +453,11 @@ namespace Otel
                     tablo2.Load(oku2); dataGridView1.DataSource = tablo2;
                     dataGridView1.AllowUserToAddRows = false;
 
-
                     label4.Text = "Seçim Bekleniyor";
                     label16.Text = "    ";
 
                     comboBox2.SelectedIndex = 0;
                     comboBox3.SelectedIndex = 0;
-
-
 
                     yeni.Close();
                     yeni.Open();
@@ -543,8 +468,6 @@ namespace Otel
                     DataSet ds = new DataSet();
                     adp.Fill(ds);
 
-
-
                     for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
                     {
                         listBox1.Items.Add(ds.Tables[0].Rows[i][2].ToString() + " " + ds.Tables[0].Rows[i][3].ToString());
@@ -554,12 +477,8 @@ namespace Otel
 
                     yeni.Close();
 
-
                     dataGridView2.ClearSelection();
                     dataGridView1.Rows[indext].Selected = true;
-
-
-
 
                     if (label21.Text == label23.Text)
                     {
@@ -582,8 +501,6 @@ namespace Otel
                         label10.Text = "Seçim Bekleniyor";
                         label13.Text = "Seçim Bekleniyor";
                         label16.Text = "    ";
-
-
                     }
                     else
                     {
@@ -593,7 +510,6 @@ namespace Otel
                         label24.Visible = true;
                         groupBox2.Visible = false;
                         groupBox4.Visible = true;
-
                     }
                 }
             }
@@ -614,19 +530,15 @@ namespace Otel
                 MessageBox.Show("Geçmiş Bir Tarihi Seçemessiniz");
                 dateTimePicker1.Value = gTarih;
             }
-
             else
             {
                 TimeSpan Sonuc = kTarih - bTarih;
                 label8.Text = Sonuc.TotalDays.ToString();
                 dateTimePicker2.Value = dateTimePicker1.Value.AddDays(1);
-
             }
 
             yeni.Close();
             yeni.Open();
-
-
 
             SqlCommand komut2 = new SqlCommand();
             komut2.CommandText = "select distinct o.Kat_No as ' Kat' , o.Oda_No as 'Oda No',o.Oda_Turu as ' Oda Türü' from Odalar as o  left join Hesap as h on o.Oda_No=h.Oda_No   where   (h.Giris_Tarihi IS NULL) or not((h.Giris_Tarihi < '" + kTarih.ToString("MM/dd/yyyy HH:mm:ss") + "' and h.Cikis_Tarihi > '" + bTarih.ToString("MM/dd/yyyy HH:mm:ss") + "')) and not(o.Oda_No = any(select distinct o.Oda_No  from Odalar as o  left join Hesap as h on o.Oda_No=h.Oda_No   where   ((h.Giris_Tarihi < '" + kTarih.ToString("MM/dd/yyyy HH:mm:ss") + "' and h.Cikis_Tarihi > '" + bTarih.ToString("MM/dd/yyyy HH:mm:ss") + "')))) order by o.Oda_No ";
@@ -635,9 +547,6 @@ namespace Otel
             DataTable tablo2 = new DataTable();
             tablo2.Load(oku2); dataGridView1.DataSource = tablo2;
             dataGridView1.AllowUserToAddRows = false;
-
-
-
 
             yeni.Close();
         }
@@ -651,7 +560,6 @@ namespace Otel
             comboBox3.SelectedIndex = -1;
             textBox2.Text = "";
 
-
             if (kTarih <= bTarih)
             {
                 MessageBox.Show("Geçmiş Bir Tarihi Seçemessiniz");
@@ -663,12 +571,8 @@ namespace Otel
                 label8.Text = Sonuc.TotalDays.ToString();
             }
 
-
-
             yeni.Close();
             yeni.Open();
-
-
 
             SqlCommand komut2 = new SqlCommand();
             komut2.CommandText = "select distinct o.Kat_No as ' Kat' , o.Oda_No as 'Oda No',o.Oda_Turu as ' Oda Türü' from Odalar as o  left join Hesap as h on o.Oda_No=h.Oda_No   where   (h.Giris_Tarihi IS NULL) or not((h.Giris_Tarihi < '" + kTarih.ToString("MM/dd/yyyy HH:mm:ss") + "' and h.Cikis_Tarihi > '" + bTarih.ToString("MM/dd/yyyy HH:mm:ss") + "')) and not(o.Oda_No = any(select distinct o.Oda_No  from Odalar as o  left join Hesap as h on o.Oda_No=h.Oda_No   where   ((h.Giris_Tarihi < '" + kTarih.ToString("MM/dd/yyyy HH:mm:ss") + "' and h.Cikis_Tarihi > '" + bTarih.ToString("MM/dd/yyyy HH:mm:ss") + "')))) order by o.Oda_No ";
@@ -678,11 +582,7 @@ namespace Otel
             tablo2.Load(oku2); dataGridView1.DataSource = tablo2;
             dataGridView1.AllowUserToAddRows = false;
 
-
-
-
             yeni.Close();
-
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -727,14 +627,12 @@ namespace Otel
 
             dateTimePicker2.Value = dateTimePicker1.Value.AddDays(1);
         }
-       
+
         private void label27_Click(object sender, EventArgs e)
         {
-
             rezarvasyon rzv = new rezarvasyon();
             if (!Baslangic.Instance.pnlcontainer.Controls.ContainsKey("rezarvasyon"))
             {
-
                 rzv.Dock = DockStyle.Fill;
                 Baslangic.Instance.pnlcontainer.Controls.Add(rzv);
             }

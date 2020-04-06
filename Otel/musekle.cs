@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
-
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -20,14 +12,12 @@ namespace Otel
             InitializeComponent();
         }
 
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         public static int yeri2;
-       
 
         private void musekle_Load(object sender, EventArgs e)
         {
-            
             comboBox1.SelectedIndex = 0;
             yeni.Close();
             yeni.Open();
@@ -51,7 +41,6 @@ namespace Otel
             if (genel.secim == "10")
             {
                 MessageBox.Show("Arama Yapabilmek İçin Lütfen Bir Kriter Seçiniz");
-
             }
             else
             {
@@ -75,7 +64,6 @@ namespace Otel
             if (genel.secim == "10")
             {
                 MessageBox.Show("Arama Yapabilmek İçin Lütfen Bir Kriter Seçiniz");
-
             }
             else
             {
@@ -99,7 +87,6 @@ namespace Otel
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,9 +104,11 @@ namespace Otel
                 case "Oda Numarası":
                     genel.secim = "Ad";
                     break;
+
                 case "Tc Kimlik Numarası":
                     genel.secim = "Kimlik_No";
                     break;
+
                 case "Müşteri Numarası":
                     genel.secim = "Musteri_no";
                     break;
@@ -135,9 +124,6 @@ namespace Otel
             this.Close();
         }
 
-
-    
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (label4.Text == label5.Text)
@@ -146,8 +132,6 @@ namespace Otel
             }
             else
             {
-                
-
                 yeni.Close();
                 yeni.Open();
 
@@ -162,15 +146,12 @@ namespace Otel
                 yMusteri_no.Value = yeri2;
                 komut2.Parameters.Add(yMusteri_no);
 
-
                 SqlParameter yOda_No = new SqlParameter();
                 yOda_No.ParameterName = "@yOda_No";
                 yOda_No.SqlDbType = SqlDbType.Int;
                 yOda_No.Size = 50;
                 yOda_No.Value = Convert.ToInt32(label1.Text);
                 komut2.Parameters.Add(yOda_No);
-
-
 
                 SqlParameter yGiris_Tarihi = new SqlParameter();
                 yGiris_Tarihi.ParameterName = "@yGiris_Tarihi";
@@ -186,11 +167,8 @@ namespace Otel
                 yCikis_Tarihi.Value = label3.Text;
                 komut2.Parameters.Add(yCikis_Tarihi);
 
-
                 komut2.ExecuteNonQuery();
                 MessageBox.Show("Kişi Odaya Eklendi");
-
-
 
                 SqlCommand komut3 = new SqlCommand();
                 komut3.CommandText = "UPDATE Musteri SET Oda_no = '" + label1.Text + "' where Musteri_no = '" + yeri2 + "'";
@@ -198,17 +176,13 @@ namespace Otel
 
                 komut3.ExecuteNonQuery();
 
-               
                 this.Close();
-
             }
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-             yeri2 = Int32.Parse(dataGridView2.CurrentRow.Cells[0].Value.ToString());
+            yeri2 = Int32.Parse(dataGridView2.CurrentRow.Cells[0].Value.ToString());
         }
-
-    
     }
 }

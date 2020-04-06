@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Otel
@@ -15,14 +8,11 @@ namespace Otel
         public Baslangic()
         {
             InitializeComponent();
-            
         }
-
-     
 
         // Formu diğer denetimlerde kullanmaı sağlayacak kodlar.
 
-        static Baslangic _obj;
+        private static Baslangic _obj;
 
         public static Baslangic Instance
         {
@@ -42,8 +32,8 @@ namespace Otel
             set { panelcontainer = value; }
         }
 
-        anasayfa ansf = new anasayfa();
-       
+        private anasayfa ansf = new anasayfa();
+
         private void Baslangic_Load(object sender, EventArgs e)
         {
             _obj = this;
@@ -56,25 +46,15 @@ namespace Otel
             ayrl.Hide();
             ytl.Hide();
             ntlr.Hide();
-            
 
-            textBox1.Text=hesap.yhesap;
+            textBox1.Text = hesap.yhesap;
             textBox1.AutoSize = false;
             this.textBox1.Size = new System.Drawing.Size(249, 250);
-
-
-
-
         }
 
         /////////////////////////////////////////////
 
-
-
-
-        rez rezerve = new rez();
-
-
+        private rez rezerve = new rez();
 
         private void rezbtn_Click(object sender, EventArgs e)
         {
@@ -89,7 +69,6 @@ namespace Otel
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(odk);
             panelcontainer.Controls["Odakayit"].Hide();
-
 
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ftr);
@@ -107,7 +86,6 @@ namespace Otel
             panelcontainer.Controls.Add(ansf);
             panelcontainer.Controls["anasayfa"].Hide();
 
-
             ytl.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ytl);
             panelcontainer.Controls["yetkili"].Hide();
@@ -117,19 +95,17 @@ namespace Otel
             panelcontainer.Controls["notlar"].Hide();
         }
 
-        lokantafiyat lokfiy = new lokantafiyat();
+        private lokantafiyat lokfiy = new lokantafiyat();
 
         private void lokbtn_Click(object sender, EventArgs e)
         {
-           
             lokfiy.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(lokfiy);
             panelcontainer.Controls["lokantafiyat"].Show();
             panelcontainer.Controls["lokantafiyat"].BringToFront();
-          
 
             msynt.Dock = DockStyle.Fill;
-            panelcontainer.Controls.Add(msynt);    
+            panelcontainer.Controls.Add(msynt);
             panelcontainer.Controls["Musyonet"].Hide();
 
             odk.Dock = DockStyle.Fill;
@@ -144,7 +120,6 @@ namespace Otel
             panelcontainer.Controls.Add(ayrl);
             panelcontainer.Controls["rezarvasyon"].Hide();
 
-
             ansf.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ansf);
             panelcontainer.Controls["anasayfa"].Hide();
@@ -158,19 +133,13 @@ namespace Otel
             panelcontainer.Controls["notlar"].Hide();
         }
 
-        Musyonet msynt = new Musyonet();
+        private Musyonet msynt = new Musyonet();
 
-        
         private void musbtn_Click(object sender, EventArgs e)
         {
-            
-
-            
-
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(odk);
             panelcontainer.Controls["Odakayit"].Hide();
-
 
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ftr);
@@ -189,7 +158,6 @@ namespace Otel
             panelcontainer.Controls["Musyonet"].Show();
             panelcontainer.Controls["Musyonet"].BringToFront();
 
-
             ansf.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ansf);
             panelcontainer.Controls["anasayfa"].Hide();
@@ -201,8 +169,6 @@ namespace Otel
             ntlr.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ntlr);
             panelcontainer.Controls["notlar"].Hide();
-
-
         }
 
         private void Baslangic_FormClosed(object sender, FormClosedEventArgs e)
@@ -210,15 +176,15 @@ namespace Otel
             Application.Exit();
         }
 
-        notlar ntlr = new notlar();
+        private notlar ntlr = new notlar();
+
         private void button8_Click(object sender, EventArgs e)
         {
             ntlr.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ntlr);
-           
+
             panelcontainer.Controls["notlar"].BringToFront();
             panelcontainer.Controls["notlar"].Show();
-
 
             msynt.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(msynt);
@@ -227,7 +193,6 @@ namespace Otel
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(odk);
             panelcontainer.Controls["Odakayit"].Hide();
-
 
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ftr);
@@ -241,7 +206,6 @@ namespace Otel
             panelcontainer.Controls.Add(ayrl);
             panelcontainer.Controls["rezarvasyon"].Hide();
 
-
             ansf.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ansf);
             panelcontainer.Controls["anasayfa"].Hide();
@@ -251,11 +215,10 @@ namespace Otel
             panelcontainer.Controls["yetkili"].Hide();
         }
 
-        odalar odlr = new odalar();
+        private odalar odlr = new odalar();
 
         private void button4_Click(object sender, EventArgs e)
         {
-
             odlr.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(odlr);
             panelcontainer.Controls["odalar"].BringToFront();
@@ -269,7 +232,6 @@ namespace Otel
             panelcontainer.Controls.Add(odk);
             panelcontainer.Controls["Odakayit"].Hide();
 
-
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ftr);
             panelcontainer.Controls["Fatura"].Hide();
@@ -281,7 +243,6 @@ namespace Otel
             ayrl.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ayrl);
             panelcontainer.Controls["rezarvasyon"].Hide();
-
 
             ansf.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ansf);
@@ -296,7 +257,7 @@ namespace Otel
             panelcontainer.Controls["notlar"].Hide();
         }
 
-        Odakayit odk = new Odakayit();
+        private Odakayit odk = new Odakayit();
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -309,7 +270,6 @@ namespace Otel
             panelcontainer.Controls.Add(msynt);
             panelcontainer.Controls["Musyonet"].Hide();
 
-
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ftr);
             panelcontainer.Controls["Fatura"].Hide();
@@ -335,7 +295,8 @@ namespace Otel
             panelcontainer.Controls["notlar"].Hide();
         }
 
-        fatura ftr = new fatura();
+        private fatura ftr = new fatura();
+
         private void button5_Click(object sender, EventArgs e)
         {
             ftr.Dock = DockStyle.Fill;
@@ -351,11 +312,9 @@ namespace Otel
             panelcontainer.Controls.Add(odk);
             panelcontainer.Controls["Odakayit"].Hide();
 
-
             lokfiy.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(lokfiy);
             panelcontainer.Controls["lokantafiyat"].Hide();
-
 
             ayrl.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ayrl);
@@ -364,7 +323,6 @@ namespace Otel
             ansf.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ansf);
             panelcontainer.Controls["anasayfa"].Hide();
-
 
             ytl.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ytl);
@@ -375,7 +333,7 @@ namespace Otel
             panelcontainer.Controls["notlar"].Hide();
         }
 
-        rezarvasyon ayrl = new rezarvasyon();
+        private rezarvasyon ayrl = new rezarvasyon();
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -392,11 +350,9 @@ namespace Otel
             panelcontainer.Controls.Add(odk);
             panelcontainer.Controls["Odakayit"].Hide();
 
-
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ftr);
             panelcontainer.Controls["Fatura"].Hide();
-
 
             lokfiy.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(lokfiy);
@@ -405,7 +361,6 @@ namespace Otel
             ansf.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ansf);
             panelcontainer.Controls["anasayfa"].Hide();
-
 
             ytl.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ytl);
@@ -438,11 +393,9 @@ namespace Otel
             panelcontainer.Controls.Add(odk);
             panelcontainer.Controls["Odakayit"].Hide();
 
-
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ftr);
             panelcontainer.Controls["Fatura"].Hide();
-
 
             lokfiy.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(lokfiy);
@@ -452,7 +405,6 @@ namespace Otel
             panelcontainer.Controls.Add(ayrl);
             panelcontainer.Controls["rezarvasyon"].Hide();
 
-
             ytl.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ytl);
             panelcontainer.Controls["yetkili"].Hide();
@@ -460,10 +412,9 @@ namespace Otel
             ntlr.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ntlr);
             panelcontainer.Controls["notlar"].Hide();
-
-
         }
-        yetkili ytl = new yetkili();
+
+        private yetkili ytl = new yetkili();
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -480,11 +431,9 @@ namespace Otel
             panelcontainer.Controls.Add(odk);
             panelcontainer.Controls["Odakayit"].Hide();
 
-
             odk.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(ftr);
             panelcontainer.Controls["Fatura"].Hide();
-
 
             lokfiy.Dock = DockStyle.Fill;
             panelcontainer.Controls.Add(lokfiy);

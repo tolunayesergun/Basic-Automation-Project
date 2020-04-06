@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -18,7 +11,8 @@ namespace Otel
         {
             InitializeComponent();
         }
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
+
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         private void richTextBox1_Click(object sender, EventArgs e)
         {
@@ -34,7 +28,6 @@ namespace Otel
 
         private void notlar_Load(object sender, EventArgs e)
         {
-       
         }
 
         private void notlar_VisibleChanged(object sender, EventArgs e)
@@ -42,7 +35,6 @@ namespace Otel
             richTextBox2.Enabled = false;
             button4.Text = "Düzenle";
             button3.Text = "Notu Sil";
-
 
             yeni.Close();
             yeni.Open();
@@ -57,7 +49,6 @@ namespace Otel
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -69,24 +60,15 @@ namespace Otel
             komut.CommandText = "insert into Notlar(Baslik,Gosterim,not_tarih,Not_icerik) values('" + textBox1.Text + "','" + dateTimePicker1.Value.ToString("MM/dd/yyyy HH:mm:ss") + "','" + Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("MM/dd/yyyy HH:mm:ss") + "','" + richTextBox1.Text + "') ";
             komut.Connection = yeni;
 
-
-
             komut.ExecuteNonQuery();
 
             {
                 textBox1.Clear();
-             
-
 
                 MessageBox.Show(" Not başarıyla eklendi");
-
-
             }
 
             yeni.Close();
-
-
-
 
             yeni.Open();
             SqlCommand komut2 = new SqlCommand();
@@ -110,14 +92,9 @@ namespace Otel
             SqlCommand cmd2 = new SqlCommand("Select * from Notlar where Not_No = '" + yer + "'", yeni);
             SqlDataReader oku2 = cmd2.ExecuteReader();
 
-
             while (oku2.Read())
             {
-
-
                 icerik = (oku2["Not_icerik"].ToString());
-
-   
             }
 
             richTextBox2.Text = icerik;
@@ -129,7 +106,6 @@ namespace Otel
             loglar lgr = new loglar();
             if (!Baslangic.Instance.pnlcontainer.Controls.ContainsKey("loglar"))
             {
-
                 lgr.Dock = DockStyle.Fill;
                 Baslangic.Instance.pnlcontainer.Controls.Add(lgr);
             }

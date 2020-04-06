@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -19,7 +12,7 @@ namespace Otel
             InitializeComponent();
         }
 
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -33,7 +26,6 @@ namespace Otel
             yisim1.Value = textBox1.Text;
             komut4.Parameters.Add(yisim1);
             komut4.Parameters.AddWithValue("@yisim", textBox1.Text);
-
 
             if (Convert.ToInt32(komut4.ExecuteScalar()) > 0)
 
@@ -60,10 +52,8 @@ namespace Otel
                 yfiyat.Value = textBox2.Text + " TL";
                 komut2.Parameters.Add(yfiyat);
 
-
                 komut2.ExecuteNonQuery();
                 MessageBox.Show("kayıt eklendi");
-
 
                 SqlCommand komut3 = new SqlCommand();
                 komut3.CommandText = "Select Yemek_isimi as 'Ürün Adı',Yemek_fiyati as 'Ürün Fiyatı' from Lokanta_fiyat ORDER BY Yemek_isimi ASC";
@@ -81,14 +71,9 @@ namespace Otel
                         tbox.Clear();
                     }
                 }
-
             }
 
-
-
-
             yeni.Close();
-
         }
 
         private void lokantafiyat_Load(object sender, EventArgs e)
@@ -103,24 +88,16 @@ namespace Otel
             tablo.Load(oku); dataGridView1.DataSource = tablo;
             dataGridView1.AllowUserToAddRows = false;
 
-
-
-
             yeni.Close();
-
         }
-
-    
 
         private void button3_Click(object sender, EventArgs e)
         {
             yeni.Open();
 
-
             string kayit = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            
 
-            SqlDataAdapter baglan = new SqlDataAdapter("DELETE from Lokanta_fiyat where Yemek_isimi = '" + kayit + "'",yeni);
+            SqlDataAdapter baglan = new SqlDataAdapter("DELETE from Lokanta_fiyat where Yemek_isimi = '" + kayit + "'", yeni);
 
             DataTable tablo2 = new DataTable();
             baglan.Fill(tablo2);
@@ -134,13 +111,7 @@ namespace Otel
             dataGridView1.AllowUserToAddRows = false;
 
             yeni.Close();
-
-
         }
-
-     
-
-
 
         public class genel555
         {
@@ -149,9 +120,7 @@ namespace Otel
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             textBox3.Text = "";
-
 
             switch (comboBox2.SelectedItem.ToString().Trim())
             {
@@ -170,19 +139,14 @@ namespace Otel
                 case "Arama Kriterini Seçin":
                     genel555.secim555 = "10";
                     break;
-
-
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
             if (genel555.secim555 == "10")
             {
                 MessageBox.Show("Arama Yapabilmek İçin Lütfen Bir Kriter Seçiniz");
-
             }
             else
             {
@@ -198,11 +162,8 @@ namespace Otel
                 tablo.Load(oku); dataGridView2.DataSource = tablo;
                 dataGridView2.AllowUserToAddRows = false;
 
-
                 yeni.Close();
             }
-
-
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -211,8 +172,6 @@ namespace Otel
             {
                 MessageBox.Show("Arama Yapabilmek İçin Lütfen Bir Kriter Seçiniz");
                 textBox1.Text = "";
-
-
             }
             else
             {
@@ -237,15 +196,14 @@ namespace Otel
         public static string oda5;
 
         public static int yer;
+
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-             yer = Int32.Parse(dataGridView2.CurrentRow.Cells[0].Value.ToString());
+            yer = Int32.Parse(dataGridView2.CurrentRow.Cells[0].Value.ToString());
             yeni.Close();
             yeni.Open();
             SqlCommand cmd = new SqlCommand("Select * from Musteri where Musteri_no = '" + yer + "'", yeni);
             SqlDataReader oku = cmd.ExecuteReader();
-
-
 
             while (oku.Read())
             {
@@ -253,9 +211,7 @@ namespace Otel
                 Soyad5 = oku["soyad"].ToString();
                 mus5 = oku["Musteri_no"].ToString();
                 oda5 = oku["Oda_no"].ToString();
-
             }
-
 
             label5.Text = Ad5 + " " + Soyad5;
             label15.Text = oda5;
@@ -272,8 +228,6 @@ namespace Otel
             dataGridView3.DataSource = tablo24;
             dataGridView3.AllowUserToAddRows = false;
 
-
-
             yeni.Close();
         }
 
@@ -281,7 +235,6 @@ namespace Otel
         {
             string yer2 = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             string yer3 = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-
 
             label11.Text = yer2;
             label10.Text = yer3;
@@ -291,13 +244,11 @@ namespace Otel
                 label7.Text = "0 TL";
             }
             else
-            { 
+            {
+                int ada = Convert.ToInt32(yer3.Replace("TL", ""));
+                int ada2 = Convert.ToInt32(textBox4.Text);
 
-            int ada =Convert.ToInt32(yer3.Replace("TL",""));
-            int ada2 = Convert.ToInt32(textBox4.Text);
-
-            label7.Text = Convert.ToString(ada * ada2) + " TL";
-
+                label7.Text = Convert.ToString(ada * ada2) + " TL";
             }
         }
 
@@ -308,11 +259,11 @@ namespace Otel
                 label7.Text = "0 TL";
             }
             else
-            { 
-            int ada = Convert.ToInt32(label10.Text.Replace("TL", ""));
-            int ada2 = Convert.ToInt32(textBox4.Text);
+            {
+                int ada = Convert.ToInt32(label10.Text.Replace("TL", ""));
+                int ada2 = Convert.ToInt32(textBox4.Text);
 
-            label7.Text = Convert.ToString(ada * ada2)+" TL";
+                label7.Text = Convert.ToString(ada * ada2) + " TL";
             }
         }
 
@@ -331,7 +282,6 @@ namespace Otel
             tablo.Load(oku8); dataGridView2.DataSource = tablo;
             dataGridView2.AllowUserToAddRows = false;
 
-
             yeni.Close();
             yeni.Open();
 
@@ -343,9 +293,6 @@ namespace Otel
             tablo2.Load(oku82);
             dataGridView3.DataSource = tablo2;
             dataGridView3.AllowUserToAddRows = false;
-
-
-
 
             yeni.Close();
         }
@@ -366,9 +313,6 @@ namespace Otel
             yMusteri_no.Value = yer;
             komut2.Parameters.Add(yMusteri_no);
 
-
-
-
             SqlParameter yOda_No = new SqlParameter();
             yOda_No.ParameterName = "@yOda_No";
             yOda_No.SqlDbType = SqlDbType.Int;
@@ -376,13 +320,11 @@ namespace Otel
             yOda_No.Value = Convert.ToInt32(label15.Text);
             komut2.Parameters.Add(yOda_No);
 
-
-
             SqlParameter yYemek_fiyati = new SqlParameter();
             yYemek_fiyati.ParameterName = "@yYemek_fiyati";
             yYemek_fiyati.SqlDbType = SqlDbType.Int;
             yYemek_fiyati.Size = 50;
-            yYemek_fiyati.Value = Convert.ToInt32(label10.Text.Replace("TL",""));
+            yYemek_fiyati.Value = Convert.ToInt32(label10.Text.Replace("TL", ""));
             komut2.Parameters.Add(yYemek_fiyati);
 
             SqlParameter yYemek_isimi = new SqlParameter();
@@ -399,15 +341,12 @@ namespace Otel
             yAdet.Value = textBox4.Text;
             komut2.Parameters.Add(yAdet);
 
-
-
             SqlParameter yTarih = new SqlParameter();
             yTarih.ParameterName = "@yTarih";
             yTarih.SqlDbType = SqlDbType.Date;
             yTarih.Size = 50;
             yTarih.Value = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             komut2.Parameters.Add(yTarih);
-
 
             SqlParameter yToplam = new SqlParameter();
             yToplam.ParameterName = "@yToplam";
@@ -416,12 +355,9 @@ namespace Otel
             yToplam.Value = Convert.ToInt32(label7.Text.Replace("TL", ""));
             komut2.Parameters.Add(yToplam);
 
-
             komut2.ExecuteNonQuery();
 
             MessageBox.Show("Ekstra Eklendi");
-
-
 
             yeni.Close();
             yeni.Open();
@@ -434,8 +370,6 @@ namespace Otel
             tablo24.Load(oku824);
             dataGridView3.DataSource = tablo24;
             dataGridView3.AllowUserToAddRows = false;
-
-
 
             yeni.Close();
         }

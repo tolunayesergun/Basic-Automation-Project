@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -18,7 +11,8 @@ namespace Otel
         {
             InitializeComponent();
         }
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
+
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         public static string Oda_Turu;
         public static int tekytk;
@@ -40,9 +34,6 @@ namespace Otel
             tablo.Load(oku); dataGridView1.DataSource = tablo;
             dataGridView1.AllowUserToAddRows = false;
 
-
-
-
             yeni.Close();
         }
 
@@ -58,7 +49,6 @@ namespace Otel
             otno1.Value = textBox1.Text;
             komut4.Parameters.Add(otno1);
             komut4.Parameters.AddWithValue("@otno", textBox1.Text);
-
 
             if (Convert.ToInt32(komut4.ExecuteScalar()) > 0)
 
@@ -97,13 +87,8 @@ namespace Otel
                 fiy.Value = textBox4.Text;
                 komut2.Parameters.Add(fiy);
 
-             
-
-
-
                 komut2.ExecuteNonQuery();
                 MessageBox.Show("kayıt eklendi");
-
 
                 SqlCommand komut3 = new SqlCommand();
                 komut3.CommandText = "Select Oda_Turu as 'Oda Türü' , tekytk as 'Tek Kişilik Yatak Sayısı',ciftytk as 'Çift Kişilik Yatak Sayısı',fiyat as 'Oda Fiyatı'  from Oda_Turleri ORDER BY Oda_Turu ASC";
@@ -121,19 +106,14 @@ namespace Otel
                         tbox.Clear();
                     }
                 }
-
             }
-
 
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
-            
 
             yeni.Close();
-
-          
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -155,8 +135,6 @@ namespace Otel
 
             SqlDataReader oku = cmd.ExecuteReader();
 
-
-
             while (oku.Read())
             {
                 Oda_Turu = oku["Oda_Turu"].ToString();
@@ -164,21 +142,15 @@ namespace Otel
                 ciftytk = Convert.ToInt32(oku["ciftytk"].ToString());
                 fiyat = Convert.ToInt32(oku["fiyat"].ToString());
                 ek = oku["ek"].ToString();
-
-
             }
-
 
             textBox6.Text = Oda_Turu;
             textBox7.Text = Convert.ToString(tekytk);
-             textBox8.Text = Convert.ToString(ciftytk);
+            textBox8.Text = Convert.ToString(ciftytk);
             textBox9.Text = Convert.ToString(fiyat);
             label5.Text = Oda_Turu;
 
-
-
             yeni.Close();
-
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -187,7 +159,7 @@ namespace Otel
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
-           
+
             groupBox1.Hide();
             button6.Show();
         }
@@ -198,7 +170,7 @@ namespace Otel
             textBox7.Clear();
             textBox8.Clear();
             textBox9.Clear();
-           
+
             groupBox2.Hide();
             button7.Show();
         }
@@ -209,11 +181,9 @@ namespace Otel
 
             if (!Baslangic.Instance.pnlcontainer.Controls.ContainsKey("Musyonet"))
             {
-
                 od.Dock = DockStyle.Fill;
                 Baslangic.Instance.pnlcontainer.Controls.Add(od);
             }
-
 
             Baslangic.Instance.pnlcontainer.Controls["Odalar"].Show();
             Baslangic.Instance.pnlcontainer.Controls["Odalar"].BringToFront();
@@ -226,14 +196,12 @@ namespace Otel
             SqlCommand kmt = new SqlCommand(komut, yeni);
             kmt.ExecuteNonQuery();
 
-
             string komut5 = "UPDATE Odalar SET Oda_Turu = '" + textBox6.Text + "' where Oda_Turu = '" + label5.Text + "'";
             SqlCommand kmt5 = new SqlCommand(komut5, yeni);
             kmt5.ExecuteNonQuery();
 
             groupBox2.Hide();
             button7.Show();
-
 
             SqlCommand komut2 = new SqlCommand();
             komut2.CommandText = "Select Oda_Turu as 'Oda Türü' , tekytk as 'Tek Kişilik Yatak Sayısı',ciftytk as 'Çift Kişilik Yatak Sayısı',fiyat as 'Oda Fiyatı' from Oda_Turleri ORDER BY Oda_Turu ASC";
@@ -245,16 +213,13 @@ namespace Otel
 
             MessageBox.Show("Değişiklikler Kaydedildi");
 
-
             yeni.Close();
-
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             groupBox2.Hide();
             button7.Show();
-      
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -263,11 +228,9 @@ namespace Otel
             yeni.Open();
             string kayit = dataGridView1.CurrentRow.Cells[0].Value.ToString();
 
-           SqlDataAdapter baglan = new SqlDataAdapter("DELETE from Oda_Turleri where Oda_Turu = '" + kayit + "'", yeni);
+            SqlDataAdapter baglan = new SqlDataAdapter("DELETE from Oda_Turleri where Oda_Turu = '" + kayit + "'", yeni);
             DataTable tablo2 = new DataTable();
             baglan.Fill(tablo2);
-
-           
 
             SqlCommand komut = new SqlCommand();
             komut.CommandText = "Select Oda_Turu as 'Oda Türü' , tekytk as 'Tek Kişilik Yatak Sayısı',ciftytk as 'Çift Kişilik Yatak Sayısı',fiyat as 'Oda Fiyatı'  from Oda_Turleri ORDER BY Oda_Turu ASC";
@@ -277,11 +240,7 @@ namespace Otel
             tablo.Load(oku); dataGridView1.DataSource = tablo;
             dataGridView1.AllowUserToAddRows = false;
 
-
-
-
             yeni.Close();
-
         }
     }
 }

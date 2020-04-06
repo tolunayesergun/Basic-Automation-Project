@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing.Drawing2D;
-using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -20,10 +12,7 @@ namespace Otel
             InitializeComponent();
         }
 
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
-
-
-
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         public static string icerik;
         public static string isim;
@@ -34,7 +23,6 @@ namespace Otel
             yeni.Open();
 
             SqlCommand komut5 = new SqlCommand("select count(*) from Yetkili where Kullanici_adi='" + textBox1.Text + "'", yeni);
-
 
             if (Convert.ToInt32(komut5.ExecuteScalar()) <= 0)
 
@@ -52,28 +40,21 @@ namespace Otel
             }
             else
             {
-
-
                 SqlCommand cmd2 = new SqlCommand("Select * from Yetkili where Kullanici_adi = '" + textBox1.Text + "'", yeni);
                 SqlDataReader oku2 = cmd2.ExecuteReader();
 
-
                 while (oku2.Read())
                 {
-
-
                     icerik = (oku2["Sifre"].ToString());
                     isim = (oku2["Yetkili_isim"].ToString());
-
-
                 }
 
-                if(icerik==textBox2.Text)
-                { 
-                hesap.yhesap = isim;
-                Baslangic menu = new Baslangic();
-                menu.Show();
-                this.Hide();
+                if (icerik == textBox2.Text)
+                {
+                    hesap.yhesap = isim;
+                    Baslangic menu = new Baslangic();
+                    menu.Show();
+                    this.Hide();
 
                     yeni.Close();
                     yeni.Open();
@@ -85,7 +66,7 @@ namespace Otel
                     dacik.ParameterName = "@dacik";
                     dacik.SqlDbType = SqlDbType.VarChar;
                     dacik.Size = 50;
-                    dacik.Value = hesap.yhesap+" Sisteme Giriş Yaptı ";
+                    dacik.Value = hesap.yhesap + " Sisteme Giriş Yaptı ";
                     komut8.Parameters.Add(dacik);
 
                     komut8.ExecuteNonQuery();
@@ -95,8 +76,7 @@ namespace Otel
                 {
                     MessageBox.Show("Yanlış Yada Eksik Şifre Girdiniz");
                 }
-
-            } 
+            }
         }
 
         private void Giriş_FormClosed(object sender, FormClosedEventArgs e)

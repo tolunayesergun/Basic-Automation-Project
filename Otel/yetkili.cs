@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -26,7 +19,6 @@ namespace Otel
             flowLayoutPanel1.DragDrop += panel_DragDrop;
             flowLayoutPanel2.DragDrop += panel_DragDrop;
 
-
             button2.MouseDown += button2_MouseDown;
             button5.MouseDown += button5_MouseDown;
             button6.MouseDown += button6_MouseDown;
@@ -34,34 +26,30 @@ namespace Otel
             button8.MouseDown += button8_MouseDown;
         }
 
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         private void yetkili_Load(object sender, EventArgs e)
         {
-           // button2.Parent = flowLayoutPanel2;
-           //if (button2.Parent == flowLayoutPanel2)
-           // {
-           //     MessageBox.Show("Başardın");
-           // }
-           //else
-           // {
-           //     MessageBox.Show("Yine Başardın ki amk");
-           // }
+            // button2.Parent = flowLayoutPanel2;
+            //if (button2.Parent == flowLayoutPanel2)
+            // {
+            //     MessageBox.Show("Başardın");
+            // }
+            //else
+            // {
+            //     MessageBox.Show("Yine Başardın ki amk");
+            // }
         }
 
-     
-
-        void panel_DragEnter(object sender, DragEventArgs e)
+        private void panel_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
 
-        void panel_DragDrop(object sender, DragEventArgs e)
+        private void panel_DragDrop(object sender, DragEventArgs e)
         {
             ((Button)e.Data.GetData(typeof(Button))).Parent = (Panel)sender;
         }
-
-       
 
         private void button5_MouseDown(object sender, MouseEventArgs e)
         {
@@ -94,10 +82,8 @@ namespace Otel
             yeni.Open();
 
             SqlCommand komut = new SqlCommand();
-            komut.CommandText = "insert into Yetkili(Yetkili_isim,Kullanici_adi,Sifre,Yetkili_Telefon,Departman) values('"+textBox1.Text+ "','" + textBox2.Text + "','" + textBox3.Text + "','" + maskedTextBox1.Text + "','"+ textBox4.Text + "') ";
+            komut.CommandText = "insert into Yetkili(Yetkili_isim,Kullanici_adi,Sifre,Yetkili_Telefon,Departman) values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + maskedTextBox1.Text + "','" + textBox4.Text + "') ";
             komut.Connection = yeni;
-
-         
 
             komut.ExecuteNonQuery();
 
@@ -106,11 +92,8 @@ namespace Otel
                 textBox2.Clear();
                 textBox3.Clear();
                 maskedTextBox1.Clear();
-             
 
                 MessageBox.Show(" Kayıt başarıyla eklendi");
-
-
             }
 
             groupBox5.Hide();
@@ -130,7 +113,6 @@ namespace Otel
 
         private void groupBox4_VisibleChanged(object sender, EventArgs e)
         {
-
         }
 
         private void yetkili_VisibleChanged(object sender, EventArgs e)
@@ -149,7 +131,6 @@ namespace Otel
 
             groupBox5.Hide();
             groupBox2.Hide();
-
         }
 
         public static int yetki1;
@@ -164,7 +145,7 @@ namespace Otel
             yeni.Open();
             groupBox2.Visible = true;
             groupBox1.Text = dataGridView2.CurrentRow.Cells[1].Value.ToString();
-    
+
             int yer = Int32.Parse(dataGridView2.CurrentRow.Cells[0].Value.ToString());
             SqlCommand cmd2 = new SqlCommand("Select * from Yetkili where Yetkili_No = '" + yer + "'", yeni);
             SqlDataReader oku2 = cmd2.ExecuteReader();
@@ -173,28 +154,18 @@ namespace Otel
 
             while (oku2.Read())
             {
-
-
-
-
                 yetki1 = Convert.ToInt32(oku2["yetki1"].ToString());
 
-                yetki2= Convert.ToInt32(oku2["yetki2"].ToString());
+                yetki2 = Convert.ToInt32(oku2["yetki2"].ToString());
 
                 yetki3 = Convert.ToInt32(oku2["yetki3"].ToString());
 
                 yetki4 = Convert.ToInt32(oku2["yetki4"].ToString());
 
                 yetki5 = Convert.ToInt32(oku2["yetki5"].ToString());
-
-
-
-
-
-
             }
 
-            if(yetki1==1)
+            if (yetki1 == 1)
             {
                 button5.Parent = flowLayoutPanel2;
             }
@@ -202,7 +173,6 @@ namespace Otel
             {
                 button5.Parent = flowLayoutPanel1;
             }
-
 
             if (yetki2 == 1)
             {
@@ -213,8 +183,6 @@ namespace Otel
                 button6.Parent = flowLayoutPanel1;
             }
 
-
-
             if (yetki3 == 1)
             {
                 button7.Parent = flowLayoutPanel2;
@@ -223,8 +191,6 @@ namespace Otel
             {
                 button7.Parent = flowLayoutPanel1;
             }
-
-
 
             if (yetki4 == 1)
             {
@@ -235,8 +201,6 @@ namespace Otel
                 button8.Parent = flowLayoutPanel1;
             }
 
-
-
             if (yetki5 == 1)
             {
                 button2.Parent = flowLayoutPanel2;
@@ -245,10 +209,6 @@ namespace Otel
             {
                 button2.Parent = flowLayoutPanel1;
             }
-
-          
-
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -291,9 +251,6 @@ namespace Otel
                 yeni.Close();
             }
 
-
-
-
             if (button6.Parent == flowLayoutPanel2)
             {
                 yeni.Close();
@@ -316,8 +273,6 @@ namespace Otel
                 komut455.ExecuteNonQuery();
                 yeni.Close();
             }
-
-
 
             if (button7.Parent == flowLayoutPanel2)
             {
@@ -342,8 +297,6 @@ namespace Otel
                 yeni.Close();
             }
 
-
-
             if (button8.Parent == flowLayoutPanel2)
             {
                 yeni.Close();
@@ -366,8 +319,6 @@ namespace Otel
                 komut455.ExecuteNonQuery();
                 yeni.Close();
             }
-
-
 
             if (button2.Parent == flowLayoutPanel2)
             {
@@ -392,11 +343,9 @@ namespace Otel
                 yeni.Close();
             }
 
-
             groupBox2.Hide();
 
             MessageBox.Show("Yetkiler Güncellendi");
-
         }
 
         private void dataGridView2_SelectionChanged(object sender, EventArgs e)

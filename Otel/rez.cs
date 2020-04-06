@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -19,18 +12,14 @@ namespace Otel
             InitializeComponent();
         }
 
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog="+ veribaglanma.veritabanı +"; Integrated Security = True");
-
-  
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         private void rez_Load(object sender, EventArgs e)
         {
-         
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-           
             yeni.Close();
             yeni.Open();
 
@@ -59,15 +48,12 @@ namespace Otel
             dCinsiyet.Value = rezcns.Text;
             komut.Parameters.Add(dCinsiyet);
 
-
-
             SqlParameter dMedeni_Hal = new SqlParameter();
             dMedeni_Hal.ParameterName = "@dMedeni_Hal";
             dMedeni_Hal.SqlDbType = SqlDbType.VarChar;
             dMedeni_Hal.Size = 50;
             dMedeni_Hal.Value = comboBox2.Text;
             komut.Parameters.Add(dMedeni_Hal);
-
 
             SqlParameter dTelefon_no = new SqlParameter();
             dTelefon_no.ParameterName = "@dTelefon_no";
@@ -89,7 +75,6 @@ namespace Otel
             dKimlik_no.Size = 50;
             dKimlik_no.Value = textBox11.Text;
             komut.Parameters.Add(dKimlik_no);
-
 
             SqlParameter dDogum_tarihi = new SqlParameter();
             dDogum_tarihi.ParameterName = "@dDogum_tarihi";
@@ -145,34 +130,23 @@ namespace Otel
             komut8.ExecuteNonQuery();
 
             {
-                        textBox1.Clear();
-                        textBox2.Clear();
-                        maskedTextBox1.Clear();
-                        textBox11.Clear();
-                        maskedTextBox2.Clear();
-                        textBox8.Clear();
-                        textBox12.Clear();
-                        textBox10.Clear();
-                        textBox4.Clear();
-                        richTextBox1.Clear();
+                textBox1.Clear();
+                textBox2.Clear();
+                maskedTextBox1.Clear();
+                textBox11.Clear();
+                maskedTextBox2.Clear();
+                textBox8.Clear();
+                textBox12.Clear();
+                textBox10.Clear();
+                textBox4.Clear();
+                richTextBox1.Clear();
 
                 MessageBox.Show(" Kayıt başarıyla eklendi");
-                   
-
-
-
-
-             
-               
-               }
-
-
-     
+            }
 
             yeni.Close();
         }
 
-      
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
@@ -202,7 +176,4 @@ namespace Otel
              && !char.IsSeparator(e.KeyChar);
         }
     }
-
 }
-
-

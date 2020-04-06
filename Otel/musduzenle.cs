@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -19,9 +11,7 @@ namespace Otel
             InitializeComponent();
         }
 
-
-
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -31,25 +21,17 @@ namespace Otel
             kmt.ExecuteNonQuery();
             yeni.Close();
 
-           
-
-
             Musyonet msyn = new Musyonet();
 
             if (!Baslangic.Instance.pnlcontainer.Controls.ContainsKey("Musyonet"))
             {
-
                 msyn.Dock = DockStyle.Fill;
                 Baslangic.Instance.pnlcontainer.Controls.Add(msyn);
             }
 
-          
             Baslangic.Instance.pnlcontainer.Controls["Musyonet"].Show();
             Baslangic.Instance.pnlcontainer.Controls["Musyonet"].BringToFront();
-
         }
-
-      
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -57,14 +39,11 @@ namespace Otel
 
             if (!Baslangic.Instance.pnlcontainer.Controls.ContainsKey("Musyonet"))
             {
-
                 msyn.Dock = DockStyle.Fill;
                 Baslangic.Instance.pnlcontainer.Controls.Add(msyn);
             }
             Baslangic.Instance.pnlcontainer.Controls["Musyonet"].Show();
             Baslangic.Instance.pnlcontainer.Controls["Musyonet"].BringToFront();
         }
-
-      
     }
 }

@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
-
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -19,13 +11,13 @@ namespace Otel
         {
             InitializeComponent();
         }
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
+
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
+
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-          DateTime bTarih = Convert.ToDateTime(dateTimePicker1.Value);
-          DateTime kTarih = Convert.ToDateTime(dateTimePicker2.Value);
-
-
+            DateTime bTarih = Convert.ToDateTime(dateTimePicker1.Value);
+            DateTime kTarih = Convert.ToDateTime(dateTimePicker2.Value);
 
             if (kTarih <= bTarih)
             {
@@ -37,27 +29,24 @@ namespace Otel
                 TimeSpan Sonuc = kTarih - bTarih;
                 label8.Text = Sonuc.TotalDays.ToString();
             }
-
         }
 
         public static int yeri3;
 
-        musekle msk = new musekle();
+        private musekle msk = new musekle();
 
         public void newWindow()
         {
-
             msk.FormClosed += nw_FormClosed;
             msk.ShowDialog();
         }
 
-        void nw_FormClosed(object sender, FormClosedEventArgs e)
+        private void nw_FormClosed(object sender, FormClosedEventArgs e)
         {
             var form = sender as musekle;
 
-            form.FormClosed -= nw_FormClosed; 
+            form.FormClosed -= nw_FormClosed;
 
-           
             DialogResult result = form.DialogResult;
 
             yeni.Close();
@@ -72,7 +61,6 @@ namespace Otel
             dataGridView1.DataSource = tablo200;
             dataGridView1.AllowUserToAddRows = false;
 
-
             yeni.Close();
             yeni.Open();
             string sorgu = "Select * from Musteri where Oda_No = '" + label1.Text.Substring(4) + "'";
@@ -81,7 +69,6 @@ namespace Otel
             adp.Fill(ds);
 
             label21.Text = Convert.ToString(ds.Tables[0].Rows.Count);
-
 
             SqlCommand komut22 = new SqlCommand();
             komut22.CommandText = "Select  Ad,Soyad from Musteri where Oda_no = " + label1.Text.Substring(4) + "";
@@ -92,44 +79,28 @@ namespace Otel
             isimver = komut22.ExecuteReader();
             while (isimver.Read())
             {
-              comboBox1.Items.Add(isimver["Ad"] + " " + isimver["Soyad"]);
+                comboBox1.Items.Add(isimver["Ad"] + " " + isimver["Soyad"]);
             }
             comboBox1.SelectedIndex = 0;
 
-
             yeni.Close();
-
-
         }
-      
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-           
             msk.label1.Text = label1.Text.Substring(4);
             msk.label2.Text = dateTimePicker1.Value.ToString("yyyy/MM/dd").Substring(0, 10).Replace(" ", "").Replace(".", "-");
             msk.label3.Text = dateTimePicker2.Value.ToString("yyyy/MM/dd").Substring(0, 10).Replace(" ", "").Replace(".", "-");
             msk.label4.Text = label21.Text;
             msk.label5.Text = label23.Text;
 
-
             newWindow();
-
-
         }
-
-
-
-    
 
         private void button2_Click(object sender, EventArgs e)
         {
-
             yeni.Close();
             yeni.Open();
-
-
 
             SqlCommand komut3 = new SqlCommand();
             komut3.CommandText = "UPDATE Musteri SET Oda_no = null where Musteri_no = '" + yeri3 + "'";
@@ -144,7 +115,6 @@ namespace Otel
             komut4.Connection = yeni;
             komut4.ExecuteNonQuery();
 
-
             yeni.Close();
             yeni.Open();
 
@@ -157,8 +127,6 @@ namespace Otel
             dataGridView1.DataSource = tablo200;
             dataGridView1.AllowUserToAddRows = false;
 
-
-
             yeni.Close();
             yeni.Open();
             string sorgu = "Select * from Musteri where Oda_No = '" + label1.Text.Substring(4) + "'";
@@ -167,9 +135,6 @@ namespace Otel
             adp.Fill(ds);
 
             label21.Text = Convert.ToString(ds.Tables[0].Rows.Count);
-
-            
-
 
             yeni.Close();
         }
@@ -180,7 +145,6 @@ namespace Otel
         }
 
         public static string kac;
-        
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -189,23 +153,18 @@ namespace Otel
 
             if (comboBox1.SelectedIndex == 0)
             {
-
                 MessageBox.Show("Müşteri Seçimi Yapmanız Gerek");
-
             }
             else
             {
                 if ((Convert.ToInt16(textBox1.Text)) <= (Convert.ToInt16(label19.Text.Replace("TL", ""))))
                 {
-
                     string sorgu = "Select * from Musteri where Oda_No = '" + label1.Text.Substring(4) + "'";
                     SqlDataAdapter adp = new SqlDataAdapter(sorgu, yeni);
                     DataSet ds = new DataSet();
                     adp.Fill(ds);
 
                     kac = ds.Tables[0].Rows[comboBox1.SelectedIndex - 1][0].ToString();
-
-
 
                     SqlCommand komut2 = new SqlCommand();
                     komut2.CommandText = "insert into Fatura(Musteri_no,Oda_Giris,Oda_Cikis,Oda_no,Odeme_Tarihi,Odeme_Tutari) values(@bMusteri_no,@bOda_Giris,@bOda_Cikis,@bOda_no,@bOdeme_Tarihi,@bOdeme_Tutari)";
@@ -218,7 +177,6 @@ namespace Otel
                     bMusteri_no.Value = Convert.ToInt32(kac);
                     komut2.Parameters.Add(bMusteri_no);
 
-
                     SqlParameter bOdeme_Tutari = new SqlParameter();
                     bOdeme_Tutari.ParameterName = "@bOdeme_Tutari";
                     bOdeme_Tutari.SqlDbType = SqlDbType.Int;
@@ -226,15 +184,12 @@ namespace Otel
                     bOdeme_Tutari.Value = textBox1.Text;
                     komut2.Parameters.Add(bOdeme_Tutari);
 
-
                     SqlParameter bOda_no = new SqlParameter();
                     bOda_no.ParameterName = "@bOda_no";
                     bOda_no.SqlDbType = SqlDbType.Int;
                     bOda_no.Size = 50;
                     bOda_no.Value = Convert.ToInt32(label1.Text.Substring(4));
                     komut2.Parameters.Add(bOda_no);
-
-
 
                     SqlParameter bOda_Giris = new SqlParameter();
                     bOda_Giris.ParameterName = "@bOda_Giris";
@@ -257,12 +212,10 @@ namespace Otel
                     bOdeme_Tarihi.Value = Convert.ToDateTime(DateTime.Now.ToShortDateString());
                     komut2.Parameters.Add(bOdeme_Tarihi);
 
-
                     komut2.ExecuteNonQuery();
 
                     textBox1.Clear();
                     MessageBox.Show("Ödeme Yapıldı");
-
 
                     SqlCommand komut50 = new SqlCommand();
                     komut50.CommandText = "Select  Musteri_no as 'Müş No' , Odeme_Tutari as 'Ödeme Tutarı (TL)', Odeme_Tarihi as 'Ödeme Tarihi', Oda_Giris from Fatura where Oda_no = " + label1.Text.Substring(4) + "  ";
@@ -273,8 +226,6 @@ namespace Otel
                     dataGridView2.DataSource = tablo50;
                     dataGridView2.Columns[3].Visible = false;
                     dataGridView2.AllowUserToAddRows = false;
-
-
 
                     string sorgu222 = "select sum(Odeme_Tutari) from Fatura where Oda_no=" + label1.Text.Substring(4) + " ";
                     SqlDataAdapter adpp222 = new SqlDataAdapter(sorgu222, yeni);
@@ -290,8 +241,6 @@ namespace Otel
                     MessageBox.Show("Kalan Tutardan Fazla Bir Miktar Girdiniz");
                 }
 
-
-
                 if (label19.Text == "0 TL")
                 {
                     checkBox1.Checked = true;
@@ -299,34 +248,25 @@ namespace Otel
                 }
                 else
                 {
-
                     checkBox1.Checked = false;
                     checkBox1.Text = "Ödeme Tamamlanmadı";
                 }
 
-
                 yeni.Close();
-
-              }
-        
-        
-        
-
+            }
         }
-
-        
 
         private void button6_Click(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
             {
-            yeni.Close();
-            yeni.Open();
+                yeni.Close();
+                yeni.Open();
 
-            SqlCommand komut4 = new SqlCommand();
-            komut4.CommandText = "delete from Hesap where  Oda_No = '" + label1.Text.Substring(4) + "'";
-            komut4.Connection = yeni;
-            komut4.ExecuteNonQuery();
+                SqlCommand komut4 = new SqlCommand();
+                komut4.CommandText = "delete from Hesap where  Oda_No = '" + label1.Text.Substring(4) + "'";
+                komut4.Connection = yeni;
+                komut4.ExecuteNonQuery();
 
                 SqlCommand komut45 = new SqlCommand();
                 komut45.CommandText = "delete from Fatura where  Oda_No = '" + label1.Text.Substring(4) + "'";
@@ -338,34 +278,30 @@ namespace Otel
                 komut455.Connection = yeni;
                 komut455.ExecuteNonQuery();
 
-
                 SqlCommand komut3 = new SqlCommand();
-            komut3.CommandText = "UPDATE Musteri SET Oda_no = null where Oda_No ='" + label1.Text.Substring(4) +"'";
-            komut3.Connection = yeni;
-            komut3.ExecuteNonQuery();
-            MessageBox.Show("Oda Çıkışı Yapıldı");
+                komut3.CommandText = "UPDATE Musteri SET Oda_no = null where Oda_No ='" + label1.Text.Substring(4) + "'";
+                komut3.Connection = yeni;
+                komut3.ExecuteNonQuery();
+                MessageBox.Show("Oda Çıkışı Yapıldı");
 
-            SqlCommand komut5 = new SqlCommand();
-            komut5.CommandText = "UPDATE Odalar SET Doluluk = 0 where Oda_No = '" + label1.Text.Substring(4) + "'";
-            komut5.Connection = yeni;
+                SqlCommand komut5 = new SqlCommand();
+                komut5.CommandText = "UPDATE Odalar SET Doluluk = 0 where Oda_No = '" + label1.Text.Substring(4) + "'";
+                komut5.Connection = yeni;
 
-            komut5.ExecuteNonQuery();
+                komut5.ExecuteNonQuery();
 
-            this.Hide();
-            fatura ftr = new fatura();
+                this.Hide();
+                fatura ftr = new fatura();
 
+                if (!Baslangic.Instance.pnlcontainer.Controls.ContainsKey("fatura"))
+                {
+                    ftr.Dock = DockStyle.Fill;
+                    Baslangic.Instance.pnlcontainer.Controls.Add(ftr);
+                }
+                Baslangic.Instance.pnlcontainer.Controls["fatura"].BringToFront();
+                Baslangic.Instance.pnlcontainer.Controls["fatura"].Show();
 
-            if (!Baslangic.Instance.pnlcontainer.Controls.ContainsKey("fatura"))
-            {
-
-                ftr.Dock = DockStyle.Fill;
-                Baslangic.Instance.pnlcontainer.Controls.Add(ftr);
-            }
-            Baslangic.Instance.pnlcontainer.Controls["fatura"].BringToFront();
-            Baslangic.Instance.pnlcontainer.Controls["fatura"].Show();
-
-            yeni.Close();
-
+                yeni.Close();
             }
             else
             {
@@ -373,69 +309,51 @@ namespace Otel
             }
         }
 
-
-
-        Ekstram eks = new Ekstram();
+        private Ekstram eks = new Ekstram();
 
         public void new2Window()
         {
-
             eks.FormClosed += nw2_FormClosed;
             eks.ShowDialog();
         }
 
-        void nw2_FormClosed(object sender, FormClosedEventArgs e)
+        private void nw2_FormClosed(object sender, FormClosedEventArgs e)
         {
             var form = sender as Ekstram;
 
             form.FormClosed -= nw2_FormClosed;
 
-
             DialogResult result = form.DialogResult;
 
             MessageBox.Show("oldu");
-
-
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             eks.label1.Text = label1.Text;
             new2Window();
-
         }
 
-
-
-        Kayitiptal kyti = new Kayitiptal();
+        private Kayitiptal kyti = new Kayitiptal();
 
         public void new3Window()
         {
-
             kyti.FormClosed += nw3_FormClosed;
             kyti.ShowDialog();
         }
 
-        void nw3_FormClosed(object sender, FormClosedEventArgs e)
+        private void nw3_FormClosed(object sender, FormClosedEventArgs e)
         {
             var form = sender as Kayitiptal;
 
             form.FormClosed -= nw3_FormClosed;
 
-
             DialogResult result = form.DialogResult;
-
-         
-
-
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-
-
-                new3Window();
-
+            new3Window();
         }
     }
 }

@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -18,20 +11,19 @@ namespace Otel
         {
             InitializeComponent();
         }
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
-       
+
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         private void button1_Click(object sender, EventArgs e)
         {
             notlar ntlr = new notlar();
             if (!Baslangic.Instance.pnlcontainer.Controls.ContainsKey("notlar"))
             {
-
                 ntlr.Dock = DockStyle.Fill;
                 Baslangic.Instance.pnlcontainer.Controls.Add(ntlr);
             }
             Baslangic.Instance.pnlcontainer.Controls["notlar"].BringToFront();
-               Baslangic.Instance.pnlcontainer.Controls["notlar"].Show();
+            Baslangic.Instance.pnlcontainer.Controls["notlar"].Show();
 
             this.Hide();
         }
@@ -52,7 +44,6 @@ namespace Otel
 
         private void loglar_Load(object sender, EventArgs e)
         {
-
         }
 
         public static int yer;
@@ -67,14 +58,9 @@ namespace Otel
             SqlCommand cmd2 = new SqlCommand("select * from Logtb where log_no= '" + yer + "'", yeni);
             SqlDataReader oku2 = cmd2.ExecuteReader();
 
-
             while (oku2.Read())
             {
-
-
                 icerik = (oku2["aciklama"].ToString());
-
-
             }
 
             richTextBox2.Text = icerik;

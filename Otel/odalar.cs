@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
-
+using System.Windows.Forms;
 
 namespace Otel
 {
@@ -19,7 +11,8 @@ namespace Otel
         {
             InitializeComponent();
         }
-        SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
+
+        private SqlConnection yeni = new SqlConnection("Data Source=" + veribaglanma.baglantiyeri + " ; Initial Catalog=" + veribaglanma.veritabanı + "; Integrated Security = True");
 
         private void odalar_Load(object sender, EventArgs e)
         {
@@ -33,7 +26,6 @@ namespace Otel
             tablo.Load(oku); dataGridView1.DataSource = tablo;
             dataGridView1.AllowUserToAddRows = false;
 
-
             SqlCommand komut2 = new SqlCommand();
             komut2.CommandText = "Select Oda_Turu  from Oda_Turleri ORDER BY Oda_Turu ASC";
             komut2.Connection = yeni;
@@ -44,8 +36,6 @@ namespace Otel
             {
                 comboBox1.Items.Add(ot["Oda_Turu"]);
             }
-
-
 
             yeni.Close();
         }
@@ -62,7 +52,6 @@ namespace Otel
             ono1.Value = textBox1.Text;
             komut4.Parameters.Add(ono1);
             komut4.Parameters.AddWithValue("@ono", textBox1.Text);
-
 
             if (Convert.ToInt32(komut4.ExecuteScalar()) > 0)
 
@@ -95,10 +84,8 @@ namespace Otel
                 OdaTuru.Value = comboBox1.Text;
                 komut2.Parameters.Add(OdaTuru);
 
-
                 komut2.ExecuteNonQuery();
                 MessageBox.Show("kayıt eklendi");
-
 
                 SqlCommand komut3 = new SqlCommand();
                 komut3.CommandText = "Select Kat_No as 'Kat' , Oda_No as 'Oda Numarası',Oda_Turu as 'Oda Türü' from Odalar ORDER BY Kat_No ASC";
@@ -116,26 +103,16 @@ namespace Otel
                         tbox.Clear();
                     }
                 }
-
             }
-
-
-
 
             yeni.Close();
         }
-
-
-      
 
         private void button2_Click(object sender, EventArgs e)
         {
             yeni.Open();
 
-       
-          
-                string kayit = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-           
+            string kayit = dataGridView1.CurrentRow.Cells[1].Value.ToString();
 
             SqlDataAdapter baglan = new SqlDataAdapter("DELETE from Odalar where Oda_No = '" + kayit + "'", yeni);
             DataTable tablo2 = new DataTable();
@@ -149,20 +126,15 @@ namespace Otel
             tablo.Load(oku); dataGridView1.DataSource = tablo;
             dataGridView1.AllowUserToAddRows = false;
 
-        
-        
-
             yeni.Close();
         }
 
-        odatur odtr = new odatur();
+        private odatur odtr = new odatur();
 
         private void button3_Click(object sender, EventArgs e)
         {
-
             if (!Baslangic.Instance.pnlcontainer.Controls.ContainsKey("odatur"))
             {
-
                 odtr.Dock = DockStyle.Fill;
                 Baslangic.Instance.pnlcontainer.Controls.Add(odtr);
             }
@@ -178,7 +150,6 @@ namespace Otel
             yeni.Close();
             yeni.Open();
 
-
             SqlCommand komut22 = new SqlCommand();
             komut22.CommandText = "Select Kat_No as 'Kat' , Oda_No as 'Oda Numarası',Oda_Turu as 'Oda Türü' from Odalar ORDER BY Kat_No ASC";
             komut22.Connection = yeni;
@@ -186,7 +157,6 @@ namespace Otel
             DataTable tablo = new DataTable();
             tablo.Load(oku); dataGridView1.DataSource = tablo;
             dataGridView1.AllowUserToAddRows = false;
-
 
             SqlCommand komut = new SqlCommand();
             komut.CommandText = "Select Oda_Turu  from Oda_Turleri ORDER BY Oda_Turu ASC";
@@ -198,7 +168,6 @@ namespace Otel
             {
                 comboBox1.Items.Add(ot["Oda_Turu"]);
             }
-
 
             yeni.Close();
         }
